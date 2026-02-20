@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GALLERY — Visual Archive</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Background Grain -->
+  <div class="grain"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <span class="header-label">Visual Archive</span>
+      <h1 class="header-title">GALLERY</h1>
+    </div>
+    <div class="header-right">
+      <span class="header-count"><span id="visibleCount">0</span> images</span>
+      <div class="view-toggle">
+        <button class="view-btn active" id="gridView" title="Grid View">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="0" y="0" width="7" height="7" rx="1" fill="currentColor"/>
+            <rect x="9" y="0" width="7" height="7" rx="1" fill="currentColor"/>
+            <rect x="0" y="9" width="7" height="7" rx="1" fill="currentColor"/>
+            <rect x="9" y="9" width="7" height="7" rx="1" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="view-btn" id="masonryView" title="Masonry View">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect x="0" y="0" width="7" height="10" rx="1" fill="currentColor"/>
+            <rect x="9" y="0" width="7" height="6" rx="1" fill="currentColor"/>
+            <rect x="0" y="12" width="7" height="4" rx="1" fill="currentColor"/>
+            <rect x="9" y="8" width="7" height="8" rx="1" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter Bar -->
+  <section class="filter-section">
+    <div class="filter-scroll">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="nature">Nature</button>
+      <button class="filter-btn" data-filter="architecture">Architecture</button>
+      <button class="filter-btn" data-filter="people">People</button>
+      <button class="filter-btn" data-filter="abstract">Abstract</button>
+      <button class="filter-btn" data-filter="travel">Travel</button>
+      <button class="filter-btn" data-filter="animals">Animals</button>
+    </div>
+    <div class="search-wrap">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Search images..." class="search-input" />
+    </div>
+  </section>
+
+  <!-- Sort Bar -->
+  <div class="sort-bar">
+    <span class="sort-label">Sort by</span>
+    <button class="sort-btn active" data-sort="default">Featured</button>
+    <button class="sort-btn" data-sort="title">Title</button>
+    <button class="sort-btn" data-sort="likes">Popular</button>
+  </div>
+
+  <!-- Gallery Grid -->
+  <main class="gallery-container" id="galleryContainer">
+    <!-- Cards injected by JS -->
+  </main>
+
+  <!-- Empty State -->
+  <div class="empty-state" id="emptyState" style="display:none">
+    <div class="empty-icon">◎</div>
+    <p>No images match your filters.</p>
+    <button onclick="resetFilters()">Reset filters</button>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" src="" alt="" />
+      </div>
+      <div class="lightbox-info">
+        <span class="lightbox-category" id="lightboxCategory"></span>
+        <h2 class="lightbox-title" id="lightboxTitle"></h2>
+        <p class="lightbox-desc" id="lightboxDesc"></p>
+        <div class="lightbox-meta">
+          <span id="lightboxLikes">♥ 0</span>
+          <span id="lightboxIndex">1 / 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lightbox-overlay" id="lightboxOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
